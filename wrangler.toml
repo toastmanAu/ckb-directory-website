@@ -4,8 +4,9 @@
 
 name = "ckb-directory"
 compatibility_date = "2026-04-16"
+pages_build_output_dir = "."
 
-# To bind KV for local dev, uncomment after creating your namespace:
-# [[kv_namespaces]]
-# binding = "CKB_DIR"
-# id = "your-kv-namespace-id-here"
+# KV namespace for vote and submission storage
+[[kv_namespaces]]
+binding = "CKB_DIR"
+id = "925b3ed727a5472ca5a9fb52d2ab370b"
