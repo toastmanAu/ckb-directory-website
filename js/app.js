@@ -1312,7 +1312,7 @@ function renderVotePage() {
       return `
         <div class="panel-card ${isLeading ? 'leading' : ''}" data-panel="${panel.id}">
           <div class="panel-image-wrap">
-            <img src="${panel.file}" alt="${escapeHtml(panel.name)}" class="panel-image" loading="lazy">
+            <img src="${panel.file}" alt="${escapeHtml(panel.name)}" class="panel-image">
             ${isLeading ? '<span class="panel-badge">Leading</span>' : ''}
           </div>
           <div class="panel-info">
@@ -1376,6 +1376,43 @@ function renderVotePage() {
       if (panelId && groupId) castVote(panelId, groupId);
     });
   });
+
+  // Track image loading progress
+  trackImageLoading();
+}
+
+function trackImageLoading() {
+  const loader = document.getElementById('voteLoader');
+  const fill = document.getElementById('voteLoaderFill');
+  const countEl = document.getElementById('voteLoaderCount');
+  const images = Array.from(document.querySelectorAll('#votingGrid .panel-image'));
+
+  if (!loader || images.length === 0) return;
+
+  const total = images.length;
+  let loaded = 0;
+
+  function update() {
+    const pct = Math.round((loaded / total) * 100);
+    if (fill) fill.style.width = pct + '%';
+    if (countEl) countEl.textContent = loaded + ' / ' + total;
+    if (loaded >= total) {
+      loader.classList.add('hidden');
+    } else {
+      loader.classList.remove('hidden');
+    }
+  }
+
+  images.forEach(img => {
+    if (img.complete) {
+      loaded++;
+    } else {
+      img.addEventListener('load', () => { loaded++; update(); }, { once: true });
+      img.addEventListener('error', () => { loaded++; update(); }, { once: true });
+    }
+  });
+
+  update();
 }
 
 function updateGlobalStats(totalVotes, votedGroupCount, totalGroups) {
