@@ -1330,11 +1330,12 @@ function renderVotePage() {
             <div class="panel-actions">
               <button class="btn-vote ${isVoted ? 'voted' : ''}"
                       data-panel="${panel.id}"
-                      data-group="${group.id}"
-                      ${hasVotedInGroup && !isVoted ? 'disabled' : ''}>
+                      data-group="${group.id}">
                 ${isVoted
                   ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> You Voted'
-                  : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Vote'
+                  : hasVotedInGroup
+                    ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Change Vote'
+                    : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Vote'
                 }
               </button>
             </div>
@@ -1405,9 +1406,19 @@ function updateGlobalStats(totalVotes, votedGroupCount, totalGroups) {
 }
 
 function castVote(panelId, groupId) {
-  if (state.votedGroups[groupId]) return;
+  const oldPanelId = state.userVotes[groupId];
 
-  // Record vote locally
+  if (oldPanelId === panelId) {
+    // Same panel clicked — no-op
+    return;
+  }
+
+  // Subtract old vote if changing
+  if (oldPanelId) {
+    state.votes[oldPanelId] = Math.max(0, (state.votes[oldPanelId] || 0) - 1);
+  }
+
+  // Record new vote locally
   state.votes[panelId] = (state.votes[panelId] || 0) + 1;
   state.userVotes[groupId] = panelId;
   state.votedGroups[groupId] = true;

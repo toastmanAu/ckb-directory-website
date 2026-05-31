@@ -1,6 +1,6 @@
 /**
  * POST /api/vote
- * Record a vote for a panel design.
+ * Record or change a vote for a panel design.
  * Body: { panelId: string, voterId: string }
  */
 
@@ -24,21 +24,32 @@ export async function onRequestPost(context) {
     const match = panelId.match(/^(.*)_(\d+)$/);
     const groupId = match ? match[1] : panelId;
 
-    // Check if this voter has already voted in this group
-    const existingVote = await kv.get(`voter:${voterId}:${groupId}`);
-    if (existingVote) {
-      return jsonResponse({ error: 'Already voted in this group', existingVote }, 409);
+    const voterKey = `voter:${voterId}:${groupId}`;
+    const existingVote = await kv.get(voterKey);
+
+    if (existingVote === panelId) {
+      // Same vote — no-op
+      const countKey = `votes:${panelId}`;
+      const current = parseInt(await kv.get(countKey) || '0', 10);
+      return jsonResponse({ success: true, panelId, groupId, total: current, changed: false });
     }
 
-    // Record the voter's choice
-    await kv.put(`voter:${voterId}:${groupId}`, panelId);
+    if (existingVote) {
+      // Changing vote — decrement old panel
+      const oldCountKey = `votes:${existingVote}`;
+      const oldCurrent = parseInt(await kv.get(oldCountKey) || '0', 10);
+      await kv.put(oldCountKey, String(Math.max(0, oldCurrent - 1)));
+    }
 
-    // Increment panel vote count
+    // Record the voter's new choice
+    await kv.put(voterKey, panelId);
+
+    // Increment new panel vote count
     const countKey = `votes:${panelId}`;
     const current = parseInt(await kv.get(countKey) || '0', 10);
     await kv.put(countKey, String(current + 1));
 
-    return jsonResponse({ success: true, panelId, groupId, total: current + 1 });
+    return jsonResponse({ success: true, panelId, groupId, total: current + 1, changed: !!existingVote });
   } catch (err) {
     return jsonResponse({ error: err.message }, 500);
   }
