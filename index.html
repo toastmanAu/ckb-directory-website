@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CKB Directory — Nervos Network Companion</title>
+  <meta name="description" content="The unofficial ecosystem directory and network companion for Nervos CKB.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#/" class="nav-brand">
+          <img src="assets/logo.png" alt="CKB Directory" class="nav-logo">
+          <span class="nav-title">CKB Directory</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#/" class="nav-link active" data-page="home">Home</a></li>
+          <li><a href="#/submit" class="nav-link" data-page="submit">Submit</a></li>
+          <li><a href="#/vote" class="nav-link" data-page="vote">Vote</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- HOME PAGE -->
+      <section class="page" id="page-home">
+        <div class="hero">
+          <div class="hero-glow"></div>
+          <div class="hero-content">
+            <img src="assets/logo.png" alt="CKB Directory Logo" class="hero-logo">
+            <h1 class="hero-title">CKB Directory</h1>
+            <p class="hero-subtitle">The unofficial ecosystem directory and network companion for <strong>Nervos CKB</strong>.</p>
+            <div class="store-badges">
+              <a href="#" class="store-badge disabled" title="Coming soon to Google Play">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12 3.84 21.85C3.34 21.6 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85 16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12 20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5 15.39 12 17.89 9.5 20.16 10.81ZM6.05 2.66L16.81 8.88 14.54 11.15 6.05 2.66Z"/></svg>
+                <div><small>GET IT ON</small><span>Google Play</span></div>
+              </a>
+              <a href="#" class="store-badge disabled" title="Coming soon to App Store">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                <div><small>Download on the</small><span>App Store</span></div>
+              </a>
+            </div>
+            <p class="coming-soon-note">Android release coming soon. iOS to follow.</p>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="quick-actions">
+            <a href="#/submit" class="action-card">
+              <div class="action-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              </div>
+              <h3>Submit Your App</h3>
+              <p>Developers and teams can request to add their application or update existing details in the directory.</p>
+            </a>
+            <a href="#/vote" class="action-card">
+              <div class="action-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+              <h3>Vote on Panels</h3>
+              <p>Help choose the next background panel designs for the app. Browse concepts and cast your vote.</p>
+            </a>
+          </div>
+
+          <div class="updates-section">
+            <h2 class="section-title">
+              <span class="title-glow"></span>
+              Latest Updates
+            </h2>
+            <div class="updates-list" id="updatesList">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUBMIT PAGE -->
+      <section class="page hidden" id="page-submit">
+        <div class="container">
+          <div class="page-header">
+            <h1 class="page-title">Submit or Update an App</h1>
+            <p class="page-subtitle">Request your application be listed in the CKB Directory, or update existing details.</p>
+          </div>
+
+          <div class="form-card">
+            <form id="submitForm" class="submit-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="subType">Submission Type</label>
+                  <select id="subType" name="submission_type" required>
+                    <option value="new">New Listing</option>
+                    <option value="update">Update Existing</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="appName">App Name *</label>
+                  <input type="text" id="appName" name="app_name" placeholder="e.g. JoyID Wallet" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="appDesc">Description *</label>
+                <textarea id="appDesc" name="description" rows="3" placeholder="Short description of what your app does..." required></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="website">Website URL *</label>
+                  <input type="url" id="website" name="website" placeholder="https://example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="contactEmail">Contact Email *</label>
+                  <input type="email" id="contactEmail" name="contact_email" placeholder="you@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="twitter">Twitter / X URL</label>
+                  <input type="url" id="twitter" name="twitter" placeholder="https://x.com/...">
+                </div>
+                <div class="form-group">
+                  <label for="github">GitHub URL</label>
+                  <input type="url" id="github" name="github" placeholder="https://github.com/...">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="discord">Discord Invite URL</label>
+                  <input type="url" id="discord" name="discord" placeholder="https://discord.gg/...">
+                </div>
+                <div class="form-group">
+                  <label for="bannerColors">Banner Gradient Colors</label>
+                  <input type="text" id="bannerColors" name="banner_colors" placeholder="#00CC99, #0F2027">
+                  <small class="field-hint">Comma-separated hex colors for the directory card</small>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" name="notes" rows="2" placeholder="Anything else we should know?"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                  <span class="btn-text">Submit Request</span>
+                  <span class="btn-loader hidden"></span>
+                </button>
+                <p class="form-note">Submissions are reviewed before appearing in the directory.</p>
+              </div>
+            </form>
+
+            <div class="form-success hidden" id="submitSuccess">
+              <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3>Submission Received</h3>
+              <p>Thank you! Your request has been recorded. The team will review it shortly.</p>
+              <a href="#/" class="btn btn-secondary">Back to Home</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VOTE PAGE -->
+      <section class="page hidden" id="page-vote">
+        <div class="container">
+          <div class="page-header">
+            <h1 class="page-title">Panel Design Voting</h1>
+            <p class="page-subtitle">Choose your favourite background panel design for the next app update.</p>
+          </div>
+
+          <div class="stats-bar" id="statsBar">
+            <div class="stat-item">
+              <span class="stat-value" id="statTotalVotes">0</span>
+              <span class="stat-label">Total Votes</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="statVoters">0</span>
+              <span class="stat-label">Unique Voters</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="statLeading">—</span>
+              <span class="stat-label">Leading Design</span>
+            </div>
+          </div>
+
+          <div class="voting-grid" id="votingGrid">
+            <!-- Panels populated by JS -->
+          </div>
+
+          <div class="vote-info">
+            <p>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              One vote per visitor. Your vote is tied to this browser session.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="assets/logo.png" alt="" class="footer-logo">
+            <span>CKB Directory</span>
+          </div>
+          <p class="footer-copy">Unofficial Nervos Network companion. Not affiliated with the Nervos Foundation.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

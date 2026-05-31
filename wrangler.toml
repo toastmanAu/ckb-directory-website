@@ -1,0 +1,11 @@
+# Cloudflare Pages configuration
+# KV bindings for Pages are managed in the dashboard (Settings > Functions > KV namespace bindings)
+# or via wrangler CLI. This file is mainly for local development (`wrangler pages dev`).
+
+name = "ckb-directory"
+compatibility_date = "2026-04-16"
+
+# To bind KV for local dev, uncomment after creating your namespace:
+# [[kv_namespaces]]
+# binding = "CKB_DIR"
+# id = "your-kv-namespace-id-here"
