@@ -8,18 +8,500 @@
    ============================================================ */
 
 const CONFIG = {
-  // Panel images to vote on. Add your 800x320 images to assets/panels/
-  // and update this array.
-  panels: [
-    {
-      id: 'panel_01',
-      name: 'Command Center',
-      file: 'assets/panels/panel_01.jpg',
-      description: 'Multi-monitor trader workstation'
-    }
-    // Add more panels here, e.g.:
-    // { id: 'panel_02', name: 'Neon City', file: 'assets/panels/panel_02.jpg', description: 'Cyberpunk skyline' },
-  ],
+  panelGroups: [
+  {
+    'id': 'byterent',
+    'name': 'Byterent',
+    'panels': [
+      {
+        'id': 'byterent_01',
+        'name': 'Byterent 1',
+        'file': 'assets/byterent_01.png',
+        'description': 'Design concept 1 for Byterent'
+      }
+    ]
+  },
+  {
+    'id': 'cklibrary',
+    'name': 'CKLibrary',
+    'panels': [
+      {
+        'id': 'cklibrary_01',
+        'name': 'CKLibrary 1',
+        'file': 'assets/cklibrary_01.png',
+        'description': 'Design concept 1 for CKLibrary'
+      },
+      {
+        'id': 'cklibrary_02',
+        'name': 'CKLibrary 2',
+        'file': 'assets/cklibrary_02.png',
+        'description': 'Design concept 2 for CKLibrary'
+      },
+      {
+        'id': 'cklibrary_03',
+        'name': 'CKLibrary 3',
+        'file': 'assets/cklibrary_03.png',
+        'description': 'Design concept 3 for CKLibrary'
+      },
+      {
+        'id': 'cklibrary_04',
+        'name': 'CKLibrary 4',
+        'file': 'assets/cklibrary_04.png',
+        'description': 'Design concept 4 for CKLibrary'
+      },
+      {
+        'id': 'cklibrary_05',
+        'name': 'CKLibrary 5',
+        'file': 'assets/cklibrary_05.png',
+        'description': 'Design concept 5 for CKLibrary'
+      },
+      {
+        'id': 'cklibrary_06',
+        'name': 'CKLibrary 6',
+        'file': 'assets/cklibrary_06.png',
+        'description': 'Design concept 6 for CKLibrary'
+      }
+    ]
+  },
+  {
+    'id': 'fiber',
+    'name': 'Fiber',
+    'panels': [
+      {
+        'id': 'fiber_01',
+        'name': 'Fiber 1',
+        'file': 'assets/fiber_01.png',
+        'description': 'Design concept 1 for Fiber'
+      },
+      {
+        'id': 'fiber_02',
+        'name': 'Fiber 2',
+        'file': 'assets/fiber_02.png',
+        'description': 'Design concept 2 for Fiber'
+      },
+      {
+        'id': 'fiber_03',
+        'name': 'Fiber 3',
+        'file': 'assets/fiber_03.png',
+        'description': 'Design concept 3 for Fiber'
+      },
+      {
+        'id': 'fiber_04',
+        'name': 'Fiber 4',
+        'file': 'assets/fiber_04.png',
+        'description': 'Design concept 4 for Fiber'
+      },
+      {
+        'id': 'fiber_05',
+        'name': 'Fiber 5',
+        'file': 'assets/fiber_05.png',
+        'description': 'Design concept 5 for Fiber'
+      },
+      {
+        'id': 'fiber_06',
+        'name': 'Fiber 6',
+        'file': 'assets/fiber_06.png',
+        'description': 'Design concept 6 for Fiber'
+      },
+      {
+        'id': 'fiber_07',
+        'name': 'Fiber 7',
+        'file': 'assets/fiber_07.png',
+        'description': 'Design concept 7 for Fiber'
+      },
+      {
+        'id': 'fiber_08',
+        'name': 'Fiber 8',
+        'file': 'assets/fiber_08.png',
+        'description': 'Design concept 8 for Fiber'
+      }
+    ]
+  },
+  {
+    'id': 'holdem_bulls',
+    'name': 'Holdem Bulls',
+    'panels': [
+      {
+        'id': 'holdem_bulls_01',
+        'name': 'Holdem Bulls 1',
+        'file': 'assets/holdem_bulls_01.png',
+        'description': 'Design concept 1 for Holdem Bulls'
+      },
+      {
+        'id': 'holdem_bulls_02',
+        'name': 'Holdem Bulls 2',
+        'file': 'assets/holdem_bulls_02.png',
+        'description': 'Design concept 2 for Holdem Bulls'
+      },
+      {
+        'id': 'holdem_bulls_03',
+        'name': 'Holdem Bulls 3',
+        'file': 'assets/holdem_bulls_03.png',
+        'description': 'Design concept 3 for Holdem Bulls'
+      },
+      {
+        'id': 'holdem_bulls_04',
+        'name': 'Holdem Bulls 4',
+        'file': 'assets/holdem_bulls_04.png',
+        'description': 'Design concept 4 for Holdem Bulls'
+      },
+      {
+        'id': 'holdem_bulls_05',
+        'name': 'Holdem Bulls 5',
+        'file': 'assets/holdem_bulls_05.png',
+        'description': 'Design concept 5 for Holdem Bulls'
+      },
+      {
+        'id': 'holdem_bulls_06',
+        'name': 'Holdem Bulls 6',
+        'file': 'assets/holdem_bulls_06.png',
+        'description': 'Design concept 6 for Holdem Bulls'
+      }
+    ]
+  },
+  {
+    'id': 'ickb',
+    'name': 'iCKB',
+    'panels': [
+      {
+        'id': 'ickb_01',
+        'name': 'iCKB 1',
+        'file': 'assets/ickb_01.png',
+        'description': 'Design concept 1 for iCKB'
+      },
+      {
+        'id': 'ickb_02',
+        'name': 'iCKB 2',
+        'file': 'assets/ickb_02.png',
+        'description': 'Design concept 2 for iCKB'
+      },
+      {
+        'id': 'ickb_03',
+        'name': 'iCKB 3',
+        'file': 'assets/ickb_03.png',
+        'description': 'Design concept 3 for iCKB'
+      },
+      {
+        'id': 'ickb_04',
+        'name': 'iCKB 4',
+        'file': 'assets/ickb_04.png',
+        'description': 'Design concept 4 for iCKB'
+      },
+      {
+        'id': 'ickb_05',
+        'name': 'iCKB 5',
+        'file': 'assets/ickb_05.png',
+        'description': 'Design concept 5 for iCKB'
+      },
+      {
+        'id': 'ickb_06',
+        'name': 'iCKB 6',
+        'file': 'assets/ickb_06.png',
+        'description': 'Design concept 6 for iCKB'
+      }
+    ]
+  },
+  {
+    'id': 'joy_id',
+    'name': 'JoyID',
+    'panels': [
+      {
+        'id': 'joy_id_01',
+        'name': 'JoyID 1',
+        'file': 'assets/joy_id_01.png',
+        'description': 'Design concept 1 for JoyID'
+      },
+      {
+        'id': 'joy_id_02',
+        'name': 'JoyID 2',
+        'file': 'assets/joy_id_02.png',
+        'description': 'Design concept 2 for JoyID'
+      },
+      {
+        'id': 'joy_id_03',
+        'name': 'JoyID 3',
+        'file': 'assets/joy_id_03.png',
+        'description': 'Design concept 3 for JoyID'
+      },
+      {
+        'id': 'joy_id_04',
+        'name': 'JoyID 4',
+        'file': 'assets/joy_id_04.png',
+        'description': 'Design concept 4 for JoyID'
+      },
+      {
+        'id': 'joy_id_05',
+        'name': 'JoyID 5',
+        'file': 'assets/joy_id_05.png',
+        'description': 'Design concept 5 for JoyID'
+      },
+      {
+        'id': 'joy_id_06',
+        'name': 'JoyID 6',
+        'file': 'assets/joy_id_06.png',
+        'description': 'Design concept 6 for JoyID'
+      },
+      {
+        'id': 'joy_id_07',
+        'name': 'JoyID 7',
+        'file': 'assets/joy_id_07.png',
+        'description': 'Design concept 7 for JoyID'
+      },
+      {
+        'id': 'joy_id_08',
+        'name': 'JoyID 8',
+        'file': 'assets/joy_id_08.png',
+        'description': 'Design concept 8 for JoyID'
+      },
+      {
+        'id': 'joy_id_09',
+        'name': 'JoyID 9',
+        'file': 'assets/joy_id_09.png',
+        'description': 'Design concept 9 for JoyID'
+      }
+    ]
+  },
+  {
+    'id': 'mobit',
+    'name': 'Mobit',
+    'panels': [
+      {
+        'id': 'mobit_01',
+        'name': 'Mobit 1',
+        'file': 'assets/mobit_01.png',
+        'description': 'Design concept 1 for Mobit'
+      },
+      {
+        'id': 'mobit_02',
+        'name': 'Mobit 2',
+        'file': 'assets/mobit_02.png',
+        'description': 'Design concept 2 for Mobit'
+      },
+      {
+        'id': 'mobit_03',
+        'name': 'Mobit 3',
+        'file': 'assets/mobit_03.png',
+        'description': 'Design concept 3 for Mobit'
+      },
+      {
+        'id': 'mobit_04',
+        'name': 'Mobit 4',
+        'file': 'assets/mobit_04.png',
+        'description': 'Design concept 4 for Mobit'
+      },
+      {
+        'id': 'mobit_05',
+        'name': 'Mobit 5',
+        'file': 'assets/mobit_05.png',
+        'description': 'Design concept 5 for Mobit'
+      },
+      {
+        'id': 'mobit_06',
+        'name': 'Mobit 6',
+        'file': 'assets/mobit_06.png',
+        'description': 'Design concept 6 for Mobit'
+      },
+      {
+        'id': 'mobit_07',
+        'name': 'Mobit 7',
+        'file': 'assets/mobit_07.png',
+        'description': 'Design concept 7 for Mobit'
+      },
+      {
+        'id': 'mobit_08',
+        'name': 'Mobit 8',
+        'file': 'assets/mobit_08.png',
+        'description': 'Design concept 8 for Mobit'
+      }
+    ]
+  },
+  {
+    'id': 'perun',
+    'name': 'Perun',
+    'panels': [
+      {
+        'id': 'perun_01',
+        'name': 'Perun 1',
+        'file': 'assets/perun_01.png',
+        'description': 'Design concept 1 for Perun'
+      },
+      {
+        'id': 'perun_02',
+        'name': 'Perun 2',
+        'file': 'assets/perun_02.png',
+        'description': 'Design concept 2 for Perun'
+      },
+      {
+        'id': 'perun_03',
+        'name': 'Perun 3',
+        'file': 'assets/perun_03.png',
+        'description': 'Design concept 3 for Perun'
+      },
+      {
+        'id': 'perun_04',
+        'name': 'Perun 4',
+        'file': 'assets/perun_04.png',
+        'description': 'Design concept 4 for Perun'
+      },
+      {
+        'id': 'perun_05',
+        'name': 'Perun 5',
+        'file': 'assets/perun_05.png',
+        'description': 'Design concept 5 for Perun'
+      },
+      {
+        'id': 'perun_06',
+        'name': 'Perun 6',
+        'file': 'assets/perun_06.png',
+        'description': 'Design concept 6 for Perun'
+      },
+      {
+        'id': 'perun_07',
+        'name': 'Perun 7',
+        'file': 'assets/perun_07.png',
+        'description': 'Design concept 7 for Perun'
+      }
+    ]
+  },
+  {
+    'id': 'pocket_node',
+    'name': 'Pocket Node',
+    'panels': [
+      {
+        'id': 'pocket_node_01',
+        'name': 'Pocket Node 1',
+        'file': 'assets/pocket_node_01.png',
+        'description': 'Design concept 1 for Pocket Node'
+      },
+      {
+        'id': 'pocket_node_02',
+        'name': 'Pocket Node 2',
+        'file': 'assets/pocket_node_02.png',
+        'description': 'Design concept 2 for Pocket Node'
+      },
+      {
+        'id': 'pocket_node_03',
+        'name': 'Pocket Node 3',
+        'file': 'assets/pocket_node_03.png',
+        'description': 'Design concept 3 for Pocket Node'
+      },
+      {
+        'id': 'pocket_node_04',
+        'name': 'Pocket Node 4',
+        'file': 'assets/pocket_node_04.png',
+        'description': 'Design concept 4 for Pocket Node'
+      },
+      {
+        'id': 'pocket_node_05',
+        'name': 'Pocket Node 5',
+        'file': 'assets/pocket_node_05.png',
+        'description': 'Design concept 5 for Pocket Node'
+      },
+      {
+        'id': 'pocket_node_06',
+        'name': 'Pocket Node 6',
+        'file': 'assets/pocket_node_06.png',
+        'description': 'Design concept 6 for Pocket Node'
+      },
+      {
+        'id': 'pocket_node_07',
+        'name': 'Pocket Node 7',
+        'file': 'assets/pocket_node_07.png',
+        'description': 'Design concept 7 for Pocket Node'
+      },
+      {
+        'id': 'pocket_node_08',
+        'name': 'Pocket Node 8',
+        'file': 'assets/pocket_node_08.png',
+        'description': 'Design concept 8 for Pocket Node'
+      },
+      {
+        'id': 'pocket_node_09',
+        'name': 'Pocket Node 9',
+        'file': 'assets/pocket_node_09.png',
+        'description': 'Design concept 9 for Pocket Node'
+      }
+    ]
+  },
+  {
+    'id': 'quantum_purse',
+    'name': 'Quantum Purse',
+    'panels': [
+      {
+        'id': 'quantum_purse_01',
+        'name': 'Quantum Purse 1',
+        'file': 'assets/quantum_purse_01.png',
+        'description': 'Design concept 1 for Quantum Purse'
+      },
+      {
+        'id': 'quantum_purse_02',
+        'name': 'Quantum Purse 2',
+        'file': 'assets/quantum_purse_02.png',
+        'description': 'Design concept 2 for Quantum Purse'
+      },
+      {
+        'id': 'quantum_purse_03',
+        'name': 'Quantum Purse 3',
+        'file': 'assets/quantum_purse_03.png',
+        'description': 'Design concept 3 for Quantum Purse'
+      },
+      {
+        'id': 'quantum_purse_04',
+        'name': 'Quantum Purse 4',
+        'file': 'assets/quantum_purse_04.png',
+        'description': 'Design concept 4 for Quantum Purse'
+      },
+      {
+        'id': 'quantum_purse_05',
+        'name': 'Quantum Purse 5',
+        'file': 'assets/quantum_purse_05.png',
+        'description': 'Design concept 5 for Quantum Purse'
+      },
+      {
+        'id': 'quantum_purse_06',
+        'name': 'Quantum Purse 6',
+        'file': 'assets/quantum_purse_06.png',
+        'description': 'Design concept 6 for Quantum Purse'
+      },
+      {
+        'id': 'quantum_purse_07',
+        'name': 'Quantum Purse 7',
+        'file': 'assets/quantum_purse_07.png',
+        'description': 'Design concept 7 for Quantum Purse'
+      },
+      {
+        'id': 'quantum_purse_08',
+        'name': 'Quantum Purse 8',
+        'file': 'assets/quantum_purse_08.png',
+        'description': 'Design concept 8 for Quantum Purse'
+      },
+      {
+        'id': 'quantum_purse_09',
+        'name': 'Quantum Purse 9',
+        'file': 'assets/quantum_purse_09.png',
+        'description': 'Design concept 9 for Quantum Purse'
+      }
+    ]
+  },
+  {
+    'id': 'talk_forum',
+    'name': 'Talk Forum',
+    'panels': [
+      {
+        'id': 'talk_forum_01',
+        'name': 'Talk Forum 1',
+        'file': 'assets/talk_forum_01.png',
+        'description': 'Design concept 1 for Talk Forum'
+      },
+      {
+        'id': 'talk_forum_02',
+        'name': 'Talk Forum 2',
+        'file': 'assets/talk_forum_02.png',
+        'description': 'Design concept 2 for Talk Forum'
+      }
+    ]
+  }
+],
 
   // Initial seeded updates shown on the home page
   updates: [
@@ -43,8 +525,8 @@ const CONFIG = {
   // Storage keys
   STORE: {
     userId: 'ckb_dir_user_id',
-    vote: 'ckb_dir_vote',
-    votes: 'ckb_dir_votes',      // local tally object
+    vote: 'ckb_dir_vote_v2',
+    votes: 'ckb_dir_votes_v2',
     submissions: 'ckb_dir_submissions'
   }
 };
@@ -56,9 +538,9 @@ const CONFIG = {
 const state = {
   currentPage: 'home',
   userId: null,
-  userVote: null,
-  votes: {},      // { panelId: count }
-  voted: false
+  userVotes: {},   // { groupId: panelId }
+  votes: {},       // { panelId: count }
+  votedGroups: {}  // { groupId: boolean }
 };
 
 /* ============================================================
@@ -103,22 +585,49 @@ function formatDate(iso) {
   return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
+function getAllPanelIds() {
+  return CONFIG.panelGroups.flatMap(g => g.panels.map(p => p.id));
+}
+
+function findGroupForPanel(panelId) {
+  return CONFIG.panelGroups.find(g => g.panels.some(p => p.id === panelId));
+}
+
 /* ============================================================
    INITIALIZATION
    ============================================================ */
 
 async function init() {
   state.userId = getUserId();
-  state.userVote = localStorage.getItem(CONFIG.STORE.vote);
+
+  // Migrate old string-format vote to new object format
+  const rawVote = localStorage.getItem(CONFIG.STORE.vote);
+  if (rawVote) {
+    try {
+      const parsed = JSON.parse(rawVote);
+      if (parsed && typeof parsed === 'object') {
+        state.userVotes = parsed;
+      }
+    } catch {
+      // Old string format — reset
+      state.userVotes = {};
+    }
+  }
+
   state.votes = loadJson(CONFIG.STORE.votes, {});
 
-  // Seed votes if empty
+  // Seed votes for all panels if empty
+  const allIds = getAllPanelIds();
   if (Object.keys(state.votes).length === 0) {
-    CONFIG.panels.forEach(p => { state.votes[p.id] = 0; });
+    allIds.forEach(id => { state.votes[id] = 0; });
     saveJson(CONFIG.STORE.votes, state.votes);
   }
 
-  state.voted = !!state.userVote;
+  // Build votedGroups map
+  state.votedGroups = {};
+  Object.entries(state.userVotes).forEach(([groupId, panelId]) => {
+    if (panelId) state.votedGroups[groupId] = true;
+  });
 
   // Try to load shared vote counts from backend
   await loadRemoteVotes();
@@ -151,13 +660,13 @@ function handleRoute() {
   };
 
   const pageId = pageMap[path] || 'home';
-  const pageEl = document.getElementById(`page-${pageId}`);
+  const pageEl = document.getElementById('page-' + pageId);
   if (pageEl) {
     pageEl.classList.remove('hidden');
     pageEl.scrollIntoView({ behavior: 'instant', block: 'start' });
   }
 
-  const navLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+  const navLink = document.querySelector('.nav-link[data-page="' + pageId + '"]');
   if (navLink) navLink.classList.add('active');
 
   state.currentPage = pageId;
@@ -258,22 +767,22 @@ function bindSubmitForm() {
     saveJson(CONFIG.STORE.submissions, submissions);
 
     // Also attempt to open a mailto as a lightweight "send" action
-    const subject = encodeURIComponent(`CKB Directory Submission: ${data.app_name}`);
+    const subject = encodeURIComponent('CKB Directory Submission: ' + data.app_name);
     const body = encodeURIComponent(
-      `Submission Type: ${data.submission_type}\n` +
-      `App Name: ${data.app_name}\n` +
-      `Description: ${data.description}\n` +
-      `Website: ${data.website}\n` +
-      `Contact: ${data.contact_email}\n` +
-      `Twitter: ${data.twitter || 'N/A'}\n` +
-      `GitHub: ${data.github || 'N/A'}\n` +
-      `Discord: ${data.discord || 'N/A'}\n` +
-      `Banner Colors: ${data.banner_colors || 'N/A'}\n` +
-      `Notes: ${data.notes || 'N/A'}\n`
+      'Submission Type: ' + data.submission_type + '\n' +
+      'App Name: ' + data.app_name + '\n' +
+      'Description: ' + data.description + '\n' +
+      'Website: ' + data.website + '\n' +
+      'Contact: ' + data.contact_email + '\n' +
+      'Twitter: ' + (data.twitter || 'N/A') + '\n' +
+      'GitHub: ' + (data.github || 'N/A') + '\n' +
+      'Discord: ' + (data.discord || 'N/A') + '\n' +
+      'Banner Colors: ' + (data.banner_colors || 'N/A') + '\n' +
+      'Notes: ' + (data.notes || 'N/A') + '\n'
     );
 
     try {
-      window.open(`mailto:submissions@ckb.directory?subject=${subject}&body=${body}`, '_blank');
+      window.open('mailto:submissions@ckb.directory?subject=' + subject + '&body=' + body, '_blank');
     } catch {
       // ignore
     }
@@ -303,45 +812,82 @@ function renderVotePage() {
   if (!grid) return;
 
   const totalVotes = Object.values(state.votes).reduce((a, b) => a + b, 0);
-  const maxVotes = Math.max(...Object.values(state.votes), 0);
-  const leadingIds = Object.entries(state.votes)
-    .filter(([, v]) => v === maxVotes && v > 0)
-    .map(([id]) => id);
+  const votedGroupCount = Object.keys(state.votedGroups).length;
+  const totalGroups = CONFIG.panelGroups.length;
 
-  grid.innerHTML = CONFIG.panels.map(panel => {
-    const count = state.votes[panel.id] || 0;
-    const percent = totalVotes > 0 ? Math.round((count / totalVotes) * 100) : 0;
-    const isLeading = leadingIds.includes(panel.id);
-    const isVoted = state.userVote === panel.id;
+  // Global stats
+  updateGlobalStats(totalVotes, votedGroupCount, totalGroups);
+
+  // Render each group
+  grid.innerHTML = CONFIG.panelGroups.map(group => {
+    const groupVotes = group.panels.map(p => state.votes[p.id] || 0);
+    const groupTotal = groupVotes.reduce((a, b) => a + b, 0);
+    const groupMax = Math.max(...groupVotes, 0);
+    const groupLeadingIds = group.panels
+      .filter((_, i) => groupVotes[i] === groupMax && groupVotes[i] > 0)
+      .map(p => p.id);
+    const hasVotedInGroup = !!state.votedGroups[group.id];
+    const userVoteInGroup = state.userVotes[group.id];
+
+    const groupHtml = group.panels.map(panel => {
+      const count = state.votes[panel.id] || 0;
+      const percent = groupTotal > 0 ? Math.round((count / groupTotal) * 100) : 0;
+      const isLeading = groupLeadingIds.includes(panel.id);
+      const isVoted = userVoteInGroup === panel.id;
+
+      return `
+        <div class="panel-card ${isLeading ? 'leading' : ''}" data-panel="${panel.id}">
+          <div class="panel-image-wrap">
+            <img src="${panel.file}" alt="${escapeHtml(panel.name)}" class="panel-image" loading="lazy">
+            ${isLeading ? '<span class="panel-badge">Leading</span>' : ''}
+          </div>
+          <div class="panel-info">
+            <h3 class="panel-name">${escapeHtml(panel.name)}</h3>
+            <p class="panel-meta">${escapeHtml(panel.description)}</p>
+            <div class="panel-vote-bar">
+              <div class="vote-progress">
+                <div class="vote-progress-fill" style="width: ${percent}%"></div>
+              </div>
+              <div class="vote-count">
+                <span class="count">${count} vote${count !== 1 ? 's' : ''}</span>
+                <span class="percent">${percent}%</span>
+              </div>
+            </div>
+            <div class="panel-actions">
+              <button class="btn-vote ${isVoted ? 'voted' : ''}"
+                      data-panel="${panel.id}"
+                      data-group="${group.id}"
+                      ${hasVotedInGroup && !isVoted ? 'disabled' : ''}>
+                ${isVoted
+                  ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> You Voted'
+                  : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Vote'
+                }
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const leadingNames = groupLeadingIds.map(id => {
+      const p = group.panels.find(x => x.id === id);
+      return p ? p.name : id;
+    });
+    const leadingText = groupTotal === 0 ? '—' : (leadingNames.length === 1 ? leadingNames[0] : 'Tie');
 
     return `
-      <div class="panel-card ${isLeading ? 'leading' : ''}" data-panel="${panel.id}">
-        <div class="panel-image-wrap">
-          <img src="${panel.file}" alt="${escapeHtml(panel.name)}" class="panel-image" loading="lazy">
-          ${isLeading ? '<span class="panel-badge">Leading</span>' : ''}
+      <div class="group-section" data-group="${group.id}">
+        <div class="group-header">
+          <h2 class="group-name">${escapeHtml(group.name)}</h2>
+          <div class="group-stats">
+            <span>${groupTotal} vote${groupTotal !== 1 ? 's' : ''}</span>
+            <span class="group-stats-sep">·</span>
+            <span>Leading: ${escapeHtml(leadingText)}</span>
+            ${hasVotedInGroup ? '<span class="group-voted-badge">Voted</span>' : ''}
+          </div>
         </div>
-        <div class="panel-info">
-          <h3 class="panel-name">${escapeHtml(panel.name)}</h3>
-          <p class="panel-meta">${escapeHtml(panel.description)}</p>
-          <div class="panel-vote-bar">
-            <div class="vote-progress">
-              <div class="vote-progress-fill" style="width: ${percent}%"></div>
-            </div>
-            <div class="vote-count">
-              <span class="count">${count} vote${count !== 1 ? 's' : ''}</span>
-              <span class="percent">${percent}%</span>
-            </div>
-          </div>
-          <div class="panel-actions">
-            <button class="btn-vote ${isVoted ? 'voted' : ''}"
-                    data-panel="${panel.id}"
-                    ${state.voted && !isVoted ? 'disabled' : ''}>
-              ${isVoted
-                ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> You Voted`
-                : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Vote`
-              }
-            </button>
-          </div>
+        <div class="voting-grid">
+          ${groupHtml}
         </div>
       </div>
     `;
@@ -351,64 +897,64 @@ function renderVotePage() {
   grid.querySelectorAll('.btn-vote').forEach(btn => {
     btn.addEventListener('click', () => {
       const panelId = btn.dataset.panel;
-      if (panelId) castVote(panelId);
+      const groupId = btn.dataset.group;
+      if (panelId && groupId) castVote(panelId, groupId);
     });
   });
-
-  updateStats(totalVotes);
 }
 
-function castVote(panelId) {
-  if (state.voted) return;
-
-  // Record vote locally
-  state.votes[panelId] = (state.votes[panelId] || 0) + 1;
-  state.userVote = panelId;
-  state.voted = true;
-
-  saveJson(CONFIG.STORE.votes, state.votes);
-  localStorage.setItem(CONFIG.STORE.vote, panelId);
-
-  // Re-render
-  renderVotePage();
-
-  // Optional: attempt to sync to a backend if one is configured
-  syncVoteToBackend(panelId, state.userId);
-}
-
-function updateStats(totalVotes) {
+function updateGlobalStats(totalVotes, votedGroupCount, totalGroups) {
   const totalEl = document.getElementById('statTotalVotes');
   const votersEl = document.getElementById('statVoters');
   const leadingEl = document.getElementById('statLeading');
 
   if (totalEl) totalEl.textContent = totalVotes.toLocaleString();
-
-  // Unique voters is approximated by vote count for local-only mode
-  if (votersEl) votersEl.textContent = totalVotes.toLocaleString();
+  if (votersEl) votersEl.textContent = votedGroupCount + ' / ' + totalGroups;
 
   if (leadingEl) {
+    // Find global leading panel across all groups
     const entries = Object.entries(state.votes);
     if (entries.length === 0 || totalVotes === 0) {
       leadingEl.textContent = '—';
     } else {
       const max = Math.max(...entries.map(([, v]) => v));
       const leaders = entries.filter(([, v]) => v === max).map(([id]) => {
-        const panel = CONFIG.panels.find(p => p.id === id);
-        return panel ? panel.name : id;
+        for (const g of CONFIG.panelGroups) {
+          const p = g.panels.find(x => x.id === id);
+          if (p) return p.name;
+        }
+        return id;
       });
       leadingEl.textContent = leaders.length === 1 ? leaders[0] : 'Tie';
     }
   }
 }
 
+function castVote(panelId, groupId) {
+  if (state.votedGroups[groupId]) return;
+
+  // Record vote locally
+  state.votes[panelId] = (state.votes[panelId] || 0) + 1;
+  state.userVotes[groupId] = panelId;
+  state.votedGroups[groupId] = true;
+
+  saveJson(CONFIG.STORE.votes, state.votes);
+  saveJson(CONFIG.STORE.vote, state.userVotes);
+
+  // Re-render
+  renderVotePage();
+
+  // Sync to backend
+  syncVoteToBackend(panelId, state.userId);
+}
+
 async function loadRemoteVotes() {
   try {
-    const ids = CONFIG.panels.map(p => p.id).join(',');
-    const res = await fetch(`/api/votes?panels=${ids}`, { method: 'GET' });
+    const ids = getAllPanelIds().join(',');
+    const res = await fetch('/api/votes?panels=' + ids, { method: 'GET' });
     if (!res.ok) return;
     const data = await res.json();
     if (data.votes) {
-      // Merge remote counts (remote wins if higher)
       Object.entries(data.votes).forEach(([id, count]) => {
         const local = state.votes[id] || 0;
         state.votes[id] = Math.max(local, count);
@@ -428,7 +974,6 @@ async function syncVoteToBackend(panelId, voterId) {
       body: JSON.stringify({ panelId, voterId })
     });
     if (res.ok) {
-      // Refresh counts from server
       await loadRemoteVotes();
       renderVotePage();
     }
