@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CKB Directory — Submissions Dashboard</title>
+  <style>
+    :root {
+      --bg: #0a0f14;
+      --surface: #111820;
+      --border: #1a2630;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --primary: #00cc99;
+      --primary-glow: rgba(0, 204, 153, 0.35);
+      --danger: #ff4757;
+      --radius: 12px;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h1 img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    button, .btn {
+      background: var(--primary);
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    button:hover, .btn:hover { opacity: 0.9; }
+    button.secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .stat-card .value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .stat-card .label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .filters {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .filters input, .filters select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      min-width: 200px;
+    }
+    .source-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px;
+      width: fit-content;
+    }
+    .source-tabs button {
+      background: transparent;
+      color: var(--text-dim);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    .source-tabs button.active {
+      background: rgba(0, 204, 153, 0.15);
+      color: var(--primary);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-size: 0.85rem;
+    }
+    thead {
+      background: rgba(0, 0, 0, 0.25);
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      font-weight: 600;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    tr:hover { background: rgba(255,255,255,0.03); }
+    .empty {
+      text-align: center;
+      padding: 48px;
+      color: var(--text-dim);
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .tag-new { background: rgba(0, 204, 153, 0.15); color: var(--primary); }
+    .tag-update { background: rgba(100, 149, 237, 0.15); color: #6495ed; }
+    .cell-wrap {
+      max-width: 280px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .cell-wrap:hover { white-space: normal; overflow: visible; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 14px 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+    }
+    .toast.show { display: flex; }
+    @media (max-width: 768px) {
+      .container { padding: 20px 16px; }
+      th, td { padding: 10px; }
+      .cell-wrap { max-width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        <img src="assets/logo.png" alt="">
+        Submissions Dashboard
+      </h1>
+      <div class="actions">
+        <button onclick="exportJson()">Export JSON</button>
+        <button class="secondary" onclick="window.location.href='/'">← Back to Site</button>
+      </div>
+    </header>
+
+    <div class="stats" id="stats">
+      <div class="stat-card">
+        <div class="value" id="statTotal">—</div>
+        <div class="label">Total Submissions</div>
+      </div>
+      <div class="stat-card">
+        <div class="value" id="statNew">—</div>
+        <div class="label">New Listings</div>
+      </div>
+      <div class="stat-card">
+        <div class="value" id="statUpdate">—</div>
+        <div class="label">Updates</div>
+      </div>
+      <div class="stat-card">
+        <div class="value" id="statLatest">—</div>
+        <div class="label">Latest (hours)</div>
+      </div>
+    </div>
+
+    <div class="source-tabs" id="sourceTabs">
+      <button class="active" onclick="setSource('kv')">Cloudflare KV</button>
+      <button onclick="setSource('local')">Local Storage</button>
+      <button onclick="setSource('merged')">Merged View</button>
+    </div>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search app name, email, description..." oninput="render()">
+      <select id="typeFilter" onchange="render()">
+        <option value="">All Types</option>
+        <option value="new">New Listing</option>
+        <option value="update">Update Existing</option>
+      </select>
+    </div>
+
+    <div id="tableWrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>App Name</th>
+            <th>Description</th>
+            <th>Website</th>
+            <th>Contact</th>
+            <th>Twitter</th>
+            <th>GitHub</th>
+            <th>Submitted</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let kvData = [];
+    let localData = [];
+    let currentSource = 'kv';
+
+    async function load() {
+      // Load KV via API
+      try {
+        const res = await fetch('/api/submissions');
+        if (res.ok) {
+          const data = await res.json();
+          kvData = data.submissions || [];
+        }
+      } catch (e) {
+        console.log('KV API unavailable (expected if opened as static file)');
+      }
+
+      // Load localStorage fallback
+      try {
+        const raw = localStorage.getItem('ckb_dir_submissions');
+        if (raw) {
+          localData = JSON.parse(raw);
+        }
+      } catch (e) {
+        console.log('localStorage empty or unreadable');
+      }
+
+      render();
+    }
+
+    function setSource(source) {
+      currentSource = source;
+      document.querySelectorAll('.source-tabs button').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      render();
+    }
+
+    function getSubmissions() {
+      if (currentSource === 'kv') return kvData;
+      if (currentSource === 'local') return localData;
+      // merged: union by id, prefer KV
+      const map = new Map();
+      localData.forEach(s => map.set(s.id || s.app_name + s.submitted_at, s));
+      kvData.forEach(s => map.set(s.id || s.app_name + s.submitted_at, s));
+      return Array.from(map.values());
+    }
+
+    function render() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const typeFilter = document.getElementById('typeFilter').value;
+      const tbody = document.getElementById('tbody');
+
+      let subs = getSubmissions();
+
+      if (typeFilter) {
+        subs = subs.filter(s => (s.submission_type || '') === typeFilter);
+      }
+      if (search) {
+        subs = subs.filter(s =>
+          (s.app_name || '').toLowerCase().includes(search) ||
+          (s.description || '').toLowerCase().includes(search) ||
+          (s.contact_email || '').toLowerCase().includes(search) ||
+          (s.website || '').toLowerCase().includes(search)
+        );
+      }
+
+      // Sort by date desc
+      subs.sort((a, b) => new Date(b.submitted_at || 0) - new Date(a.submitted_at || 0));
+
+      // Stats
+      const all = getSubmissions();
+      document.getElementById('statTotal').textContent = all.length;
+      document.getElementById('statNew').textContent = all.filter(s => s.submission_type === 'new').length;
+      document.getElementById('statUpdate').textContent = all.filter(s => s.submission_type === 'update').length;
+      const latest = all.length ? new Date(Math.max(...all.map(s => new Date(s.submitted_at || 0)))) : null;
+      document.getElementById('statLatest').textContent = latest
+        ? Math.max(0, Math.round((Date.now() - latest) / 3600000))
+        : '—';
+
+      if (subs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="empty">No submissions found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = subs.map(s => {
+        const type = s.submission_type || 'new';
+        const typeClass = type === 'new' ? 'tag-new' : 'tag-update';
+        const date = s.submitted_at ? new Date(s.submitted_at).toLocaleString() : '—';
+        return `<tr>
+          <td><span class="tag ${typeClass}">${type}</span></td>
+          <td><strong>${escapeHtml(s.app_name || '—')}</strong></td>
+          <td><div class="cell-wrap" title="${escapeHtml(s.description || '')}">${escapeHtml(s.description || '—')}</div></td>
+          <td>${s.website ? `<a href="${escapeHtml(s.website)}" target="_blank">Link</a>` : '—'}</td>
+          <td>${s.contact_email ? `<a href="mailto:${escapeHtml(s.contact_email)}">${escapeHtml(s.contact_email)}</a>` : '—'}</td>
+          <td>${s.twitter ? `<a href="${escapeHtml(s.twitter)}" target="_blank">Link</a>` : '—'}</td>
+          <td>${s.github ? `<a href="${escapeHtml(s.github)}" target="_blank">Link</a>` : '—'}</td>
+          <td>${date}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function exportJson() {
+      const data = getSubmissions();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ckb-submissions-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Exported ' + data.length + ' submissions');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    load();
+  </script>
+</body>
+</html>
